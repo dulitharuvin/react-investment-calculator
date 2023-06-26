@@ -6,7 +6,7 @@ const InvestmentsList = (props) => {
   const { yearlyData } = props;
 
   const yearlyDataRaws = yearlyData.map((yd) => (
-    <tr>
+    <tr key={yd.year}>
       <td>{yd.year}</td>
       <td>{yd.savingsEndOfYear}</td>
       <td>{yd.yearlyInterest}</td>

@@ -32,17 +32,24 @@ function App() {
       });
     }
 
-    setYearlyData(...yearlyData);
+    setYearlyData(yearlyData);
+  };
+
+  const resetList = () => {
+    setYearlyData([]);
   };
 
   return (
     <div>
       <Header logo={logo} />
 
-      <InvestmentForm onAddInvestment={calculateHandler} />
+      <InvestmentForm
+        onAddInvestment={calculateHandler}
+        resetList={resetList}
+      />
 
-      {yearlyData.lenght && <InvestmentsList yearlyData={yearlyData} />}
-      {!yearlyData.lenght && <EmptyMessage />}
+      {yearlyData.length && <InvestmentsList yearlyData={yearlyData} />}
+      {!yearlyData.length && <EmptyMessage />}
     </div>
   );
 }

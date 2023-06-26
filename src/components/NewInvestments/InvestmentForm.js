@@ -31,6 +31,7 @@ const InvestmentForm = (props) => {
     setYearlySavings("");
     setExpectedReturn("");
     setDuration("");
+    props.resetList();
   };
 
   const inputChangeHandler = (event) => {
