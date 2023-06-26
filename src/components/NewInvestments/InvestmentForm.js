@@ -33,9 +33,8 @@ const InvestmentForm = (props) => {
     props.resetList();
   };
 
-  const inputChangeHandler = (event) => {
-    const { id, value } = event.target;
-    switch (id) {
+  const inputChangeHandler = (input, value) => {
+    switch (input) {
       case "current-savings":
         setCurrentSavings(value);
         break;
@@ -62,7 +61,9 @@ const InvestmentForm = (props) => {
             type="number"
             id="current-savings"
             value={currentSavings}
-            onChange={inputChangeHandler}
+            onChange={(event) =>
+              inputChangeHandler("current-savings", event.target.value)
+            }
           />
         </p>
         <p>
@@ -71,7 +72,9 @@ const InvestmentForm = (props) => {
             type="number"
             id="yearly-contribution"
             value={yearlySavings}
-            onChange={inputChangeHandler}
+            onChange={(event) =>
+              inputChangeHandler("yearly-contribution", event.target.value)
+            }
           />
         </p>
       </div>
@@ -84,7 +87,9 @@ const InvestmentForm = (props) => {
             type="number"
             id="expected-return"
             value={expectedReturn}
-            onChange={inputChangeHandler}
+            onChange={(event) =>
+              inputChangeHandler("expected-return", event.target.value)
+            }
           />
         </p>
         <p>
@@ -93,7 +98,9 @@ const InvestmentForm = (props) => {
             type="number"
             id="duration"
             value={duration}
-            onChange={inputChangeHandler}
+            onChange={(event) =>
+              inputChangeHandler("duration", event.target.value)
+            }
           />
         </p>
       </div>
