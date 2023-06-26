@@ -1,19 +1,23 @@
+import React, { useState } from "react";
 import logo from "./assets/investment-calculator-logo.png";
 import InvestmentsList from "./components/Invetments/InvestmentsList";
 import InvestmentForm from "./components/NewInvestments/InvestmentForm";
 import Header from "./components/UI/Header";
+import EmptyMessage from "./components/UI/EmptyMessage";
 
 function App() {
+  const [yearlyData, setYearlyData] = useState([]);
+
   const calculateHandler = (userInput) => {
     // Should be triggered when form is submitted
     // You might not directly want to bind it to the submit event on the form though...
 
     const yearlyData = []; // per-year results
 
-    let currentSavings = +userInput["current-savings"]; // feel free to change the shape of this input object!
-    const yearlyContribution = +userInput["yearly-contribution"]; // as mentioned: feel free to change the shape...
-    const expectedReturn = +userInput["expected-return"] / 100;
-    const duration = +userInput["duration"];
+    let currentSavings = +userInput.currentSavings; // feel free to change the shape of this input object!
+    const yearlyContribution = +userInput.yearlySavings; // as mentioned: feel free to change the shape...
+    const expectedReturn = +userInput.expectedReturn / 100;
+    const duration = +userInput.duration;
 
     // The below code calculates yearly results (total savings, interest etc)
     for (let i = 0; i < duration; i++) {
@@ -28,18 +32,17 @@ function App() {
       });
     }
 
-    // do something with yearlyData ...
+    setYearlyData(...yearlyData);
   };
 
   return (
     <div>
       <Header logo={logo} />
 
-      <InvestmentForm />
-      {/* Todo: Show below table conditionally (only once result data is available) */}
-      {/* Show fallback text if no data is available */}
+      <InvestmentForm onAddInvestment={calculateHandler} />
 
-      <InvestmentsList />
+      {yearlyData.lenght && <InvestmentsList yearlyData={yearlyData} />}
+      {!yearlyData.lenght && <EmptyMessage />}
     </div>
   );
 }
