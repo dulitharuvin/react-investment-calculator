@@ -61,6 +61,7 @@ const InvestmentForm = (props) => {
           <input
             type="number"
             id="current-savings"
+            value={currentSavings}
             onChange={inputChangeHandler}
           />
         </p>
@@ -69,6 +70,7 @@ const InvestmentForm = (props) => {
           <input
             type="number"
             id="yearly-contribution"
+            value={yearlySavings}
             onChange={inputChangeHandler}
           />
         </p>
@@ -81,12 +83,18 @@ const InvestmentForm = (props) => {
           <input
             type="number"
             id="expected-return"
+            value={expectedReturn}
             onChange={inputChangeHandler}
           />
         </p>
         <p>
           <label htmlFor="duration">Investment Duration (years)</label>
-          <input type="number" id="duration" onChange={inputChangeHandler} />
+          <input
+            type="number"
+            id="duration"
+            value={duration}
+            onChange={inputChangeHandler}
+          />
         </p>
       </div>
       <p className={styles.actions}>
