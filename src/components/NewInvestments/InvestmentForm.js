@@ -25,7 +25,7 @@ const InvestmentForm = (props) => {
     setDuration("");
   };
 
-  const resetForm = () => {
+  const resetHandler = () => {
     setCurrentSavings("");
     setYearlySavings("");
     setExpectedReturn("");
@@ -98,7 +98,11 @@ const InvestmentForm = (props) => {
         </p>
       </div>
       <p className={styles.actions}>
-        <button type="reset" className={styles.buttonAlt} onClick={resetForm}>
+        <button
+          type="reset"
+          className={styles.buttonAlt}
+          onClick={resetHandler}
+        >
           Reset
         </button>
         <button type="submit" className={styles.button}>
