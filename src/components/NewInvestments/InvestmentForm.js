@@ -19,10 +19,6 @@ const InvestmentForm = (props) => {
     };
 
     props.onAddInvestment(investmentData);
-    setCurrentSavings("");
-    setYearlySavings("");
-    setExpectedReturn("");
-    setDuration("");
   };
 
   const resetHandler = () => {

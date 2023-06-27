@@ -3,15 +3,21 @@ import React from "react";
 import styles from "./InvestmentsList.module.css";
 
 const InvestmentsList = (props) => {
-  const { yearlyData } = props;
+  const { yearlyData, initialInvestment } = props;
 
-  const yearlyDataRaws = yearlyData.map((yd) => (
+  const initialInvestmentProp = +initialInvestment;
+
+  const yearlyDataRows = yearlyData.map((yd) => (
     <tr key={yd.year}>
       <td>{yd.year}</td>
       <td>{yd.savingsEndOfYear}</td>
       <td>{yd.yearlyInterest}</td>
-      <td>{}</td>
-      <td>{yd.yearlyContribution}</td>
+      <td>
+        {yd.savingsEndOfYear -
+          initialInvestmentProp -
+          yd.yearlyContribution * yd.year}
+      </td>
+      <td>{initialInvestmentProp + yd.yearlyContribution * yd.year}</td>
     </tr>
   ));
   return (
@@ -25,7 +31,7 @@ const InvestmentsList = (props) => {
           <th>Invested Capital</th>
         </tr>
       </thead>
-      <tbody>{yearlyDataRaws}</tbody>
+      <tbody>{yearlyDataRows}</tbody>
     </table>
   );
 };
