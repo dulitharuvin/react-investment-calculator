@@ -44,7 +44,12 @@ function App() {
         resetList={resetList}
       />
 
-      {userInput && <InvestmentsList yearlyData={yearlyData} initialInvestment={userInput.currentSavings}/>}
+      {userInput && (
+        <InvestmentsList
+          yearlyData={yearlyData}
+          initialInvestment={userInput.currentSavings}
+        />
+      )}
       {!userInput && <EmptyMessage />}
     </div>
   );

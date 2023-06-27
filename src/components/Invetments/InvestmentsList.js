@@ -12,8 +12,6 @@ const formatter = new Intl.NumberFormat("en-US", {
 const InvestmentsList = (props) => {
   const { yearlyData, initialInvestment } = props;
 
-  const initialInvestmentProp = +initialInvestment;
-
   const yearlyDataRows = yearlyData.map((yd) => (
     <tr key={yd.year}>
       <td>{yd.year}</td>
@@ -22,14 +20,12 @@ const InvestmentsList = (props) => {
       <td>
         {formatter.format(
           yd.savingsEndOfYear -
-            initialInvestmentProp -
+            initialInvestment -
             yd.yearlyContribution * yd.year
         )}
       </td>
       <td>
-        {formatter.format(
-          initialInvestmentProp + yd.yearlyContribution * yd.year
-        )}
+        {formatter.format(initialInvestment + yd.yearlyContribution * yd.year)}
       </td>
     </tr>
   ));

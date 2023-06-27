@@ -12,7 +12,7 @@ const InvestmentForm = (props) => {
     event.preventDefault();
 
     const investmentData = {
-      currentSavings: currentSavings,
+      currentSavings: +currentSavings,
       yearlySavings: yearlySavings,
       expectedReturn: expectedReturn,
       duration: duration,
